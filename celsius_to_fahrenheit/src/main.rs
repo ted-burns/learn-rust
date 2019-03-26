@@ -20,14 +20,14 @@ fn main() {
         'c' | 'C' => (&(input[..input.len()-1]), &Temperature::Celsius),
         'f' | 'F' => (&(input[..input.len()-1]), &Temperature::Farenheit),
         _ => (input, &Temperature::Farenheit)
-    } ;
+    };
     
     println!("Conversion is {}", build_temp(temperature_string, to_temperature).convert());
 }
 
 fn build_temp(input: &str, to_temperature: &Fn(f64) -> Temperature) -> Temperature {
     let temp = parse_temp(input.trim().to_string());
-    return to_temperature(temp);
+    to_temperature(temp)
 }
 
 fn parse_temp(input: String) -> f64 {
@@ -47,10 +47,10 @@ enum Temperature {
 
 impl Temperature {
     fn convert(self) -> Temperature {
-        return match self {
+        match self {
             Temperature::Farenheit(f) => Temperature::Celsius((f - CONVERSION_CONSTANT) / CONVERSION_COEFFICIENT),
             Temperature::Celsius(c) => Temperature::Farenheit(c * CONVERSION_COEFFICIENT + CONVERSION_CONSTANT)
-        }; 
+        }
     }
 }
 
@@ -61,7 +61,7 @@ impl fmt::Display for Temperature {
             Temperature::Celsius(t) => (t, "C")
         };
 
-        return write!(f, "{:.2} {}", temp, unit);
+        write!(f, "{:.2} {}", temp, unit)
 
     }
 
