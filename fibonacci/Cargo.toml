@@ -1,0 +1,7 @@
+[package]
+name = "fibonacci"
+version = "0.1.0"
+authors = ["Teddy Burns <edward.burns@bc.edu>"]
+edition = "2018"
+
+[dependencies]

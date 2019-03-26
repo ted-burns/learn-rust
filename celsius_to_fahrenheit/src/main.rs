@@ -1,10 +1,8 @@
 use std::io::{self, Write};
 use std::fmt;
 
-
 const CONVERSION_COEFFICIENT: f64 = 9.0/5.0;
 const CONVERSION_CONSTANT: f64 = 32.0;
-
 
 fn main() {
     print!("Enter your temperature to convert: ");
